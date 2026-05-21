@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Prestations — Inès Ouajib · Community Management</title>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Mulish', sans-serif; background: #FAFAF8; color: #111111; font-size: 9.5pt; line-height: 1.55; }
+  header { background: #FFFFFF; border-bottom: 1px solid #E5E0DA; }
+  .header-top { background: #8B0435; height: 5px; width: 100%; }
+  .header-inner { padding: 22px 36px 18px; display: flex; align-items: flex-start; gap: 20px; max-width: 960px; margin: 0 auto; }
+  .logo-area { flex-shrink: 0; width: 64px; height: 64px; }
+  .logo-svg { width: 64px; height: 64px; }
+  .header-text { flex: 1; }
+  .header-eyebrow { font-size: 6.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: #8B0435; font-weight: 700; margin-bottom: 4px; font-family: 'League Spartan', sans-serif; }
+  .header-title { font-family: 'League Spartan', sans-serif; font-size: 24pt; font-weight: 700; line-height: 1.05; color: #111111; letter-spacing: -0.02em; margin-bottom: 2px; }
+  .header-title em { font-style: normal; color: #8B0435; }
+  .header-sub { font-size: 7.5pt; color: #7A746E; font-weight: 300; margin-top: 4px; }
+  .info-bar { background: #111111; padding: 10px 36px; }
+  .info-bar-inner { max-width: 960px; margin: 0 auto; display: flex; }
+  .info-cell { flex: 1; padding-right: 24px; }
+  .info-label { font-size: 6pt; letter-spacing: 0.2em; text-transform: uppercase; color: #8B0435; font-weight: 700; font-family: 'League Spartan', sans-serif; margin-bottom: 1px; }
+  .info-value { font-size: 8pt; color: rgba(255,255,255,0.8); font-weight: 300; }
+  .main-wrap { padding: 28px 36px 36px; max-width: 960px; margin: 0 auto; }
+  .intro-note { background: rgba(139,4,53,0.07); border-left: 3px solid #8B0435; border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 24px; font-size: 8pt; color: #111111; line-height: 1.6; }
+  .intro-note strong { color: #8B0435; font-weight: 600; }
+  .section-head { display: flex; align-items: flex-end; gap: 14px; padding-bottom: 10px; margin-bottom: 14px; margin-top: 26px; border-bottom: 1px solid #E5E0DA; }
+  .sec-num { font-family: 'League Spartan', sans-serif; font-size: 36pt; line-height: 1; color: rgba(139,4,53,0.13); font-weight: 700; letter-spacing: -0.02em; flex-shrink: 0; }
+  .sec-meta { flex: 1; }
+  .sec-tag { font-size: 6pt; letter-spacing: 0.18em; text-transform: uppercase; color: #8B0435; font-weight: 700; font-family: 'League Spartan', sans-serif; margin-bottom: 2px; }
+  .sec-title { font-family: 'League Spartan', sans-serif; font-size: 14pt; font-weight: 600; color: #111111; line-height: 1.15; letter-spacing: -0.01em; }
+  .presta-card { background: #FFFFFF; border: 1px solid #E5E0DA; border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+  .presta-header { display: flex; align-items: center; justify-content: space-between; padding: 9px 16px; background: #8B0435; }
+  .presta-name { font-family: 'League Spartan', sans-serif; font-size: 10pt; font-weight: 700; color: #FFFFFF; letter-spacing: -0.01em; }
+  .presta-right { display: flex; align-items: center; gap: 12px; }
+  .presta-tag { font-family: 'League Spartan', sans-serif; font-size: 6pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 2px 8px; }
+  .presta-badge-devis { font-family: 'League Spartan', sans-serif; font-size: 7pt; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #FFFFFF; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.35); border-radius: 4px; padding: 3px 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: 8pt; }
+  thead th { background: rgba(139,4,53,0.07); padding: 6px 12px; text-align: left; font-size: 6pt; letter-spacing: 0.14em; text-transform: uppercase; color: #8B0435; font-weight: 700; font-family: 'League Spartan', sans-serif; border-bottom: 1px solid #E5E0DA; }
+  tbody tr { border-bottom: 1px solid #E5E0DA; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 7px 12px; vertical-align: top; color: #111111; font-weight: 300; }
+  tbody td:first-child { font-weight: 500; color: #111111; white-space: nowrap; min-width: 150px; }
+  .td-incl { text-align: right; white-space: nowrap; color: #8B0435; font-weight: 600; font-size: 7pt; font-family: 'League Spartan', sans-serif; letter-spacing: 0.06em; }
+  .presta-note { padding: 8px 16px; background: #FAFAF8; font-size: 7.5pt; color: #7A746E; font-style: italic; border-top: 1px solid #E5E0DA; }
+  .analyse-grid { display: flex; gap: 14px; margin: 12px; }
+  .analyse-col { flex: 1; background: #FAFAF8; border: 1px solid #E5E0DA; border-radius: 8px; overflow: hidden; }
+  .analyse-col-head { background: rgba(139,4,53,0.07); padding: 7px 12px; font-family: 'League Spartan', sans-serif; font-size: 7pt; letter-spacing: 0.14em; text-transform: uppercase; color: #8B0435; font-weight: 700; border-bottom: 1px solid #E5E0DA; }
+  .analyse-list { padding: 8px 12px; list-style: none; }
+  .analyse-list li { font-size: 7.5pt; padding: 3px 0 3px 12px; border-bottom: 1px solid #E5E0DA; color: #111111; font-weight: 300; position: relative; }
+  .analyse-list li:last-child { border-bottom: none; }
+  .analyse-list li::before { content: '—'; color: #8B0435; position: absolute; left: 0; font-weight: 600; }
+  .options-card { background: #FFFFFF; border: 1px solid #E5E0DA; border-radius: 10px; overflow: hidden; margin-bottom: 18px; }
+  .options-card thead th:last-child { text-align: right; }
+  .options-card tbody td:last-child { text-align: right; font-weight: 600; color: #8B0435; white-space: nowrap; font-size: 7pt; font-family: 'League Spartan', sans-serif; letter-spacing: 0.06em; }
+  .methode-grid { display: flex; gap: 10px; margin-bottom: 18px; }
+  .methode-step { flex: 1; background: #FFFFFF; border: 1px solid #E5E0DA; border-radius: 10px; padding: 12px 14px; position: relative; overflow: hidden; }
+  .methode-step::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #8B0435; }
+  .step-num { font-family: 'League Spartan', sans-serif; font-size: 20pt; color: rgba(139,4,53,0.13); font-weight: 700; line-height: 1; margin-bottom: 6px; }
+  .step-title { font-family: 'League Spartan', sans-serif; font-size: 8pt; font-weight: 700; color: #111111; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .step-desc { font-size: 7.5pt; color: #7A746E; font-weight: 300; line-height: 1.5; }
+  .contact-cta { background: #8B0435; border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .cta-text { font-family: 'League Spartan', sans-serif; font-size: 10pt; font-weight: 600; color: #FFFFFF; }
+  .cta-sub { font-size: 7.5pt; color: rgba(255,255,255,0.65); font-weight: 300; margin-top: 2px; }
+  .cta-contact { text-align: right; }
+  .cta-email { font-size: 8.5pt; color: #FFFFFF; font-weight: 500; }
+  .cta-phone { font-size: 8pt; color: rgba(255,255,255,0.65); font-weight: 300; margin-top: 2px; }
+  .doc-footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid #E5E0DA; display: flex; justify-content: space-between; align-items: center; }
+  .footer-left { font-size: 7pt; color: #7A746E; font-weight: 300; }
+  .footer-right { font-size: 7pt; color: #8B0435; font-weight: 600; font-family: 'League Spartan', sans-serif; letter-spacing: 0.06em; text-align: right; }
+  .network-badge { display: inline-flex; align-items: center; gap: 5px; border-radius: 4px; padding: 2px 8px; font-family: 'League Spartan', sans-serif; font-size: 6pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #FFFFFF; }
+  .badge-fb { background: #1877F2; }
+  .badge-li { background: #0A66C2; }
+  .badge-ig { background: #C13584; }
+  .badge-tt { background: #111111; border: 1px solid rgba(255,255,255,0.25); }
+
+  /* Valeurs / engagements */
+  .engagements-grid { display: flex; gap: 12px; margin-bottom: 6px; }
+  .engagement-block {
+    flex: 1;
+    background: #FFFFFF;
+    border: 1px solid #E5E0DA;
+    border-radius: 10px;
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .engagement-block::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #8B0435; }
+  .engagement-label { font-size: 6pt; letter-spacing: 0.18em; text-transform: uppercase; color: #8B0435; font-weight: 700; font-family: 'League Spartan', sans-serif; margin-bottom: 5px; }
+  .engagement-title { font-family: 'League Spartan', sans-serif; font-size: 10pt; font-weight: 700; color: #111111; line-height: 1.15; margin-bottom: 6px; }
+  .engagement-detail { font-size: 7.5pt; color: #7A746E; font-weight: 300; line-height: 1.55; }
+  .devis-note { font-size: 7.5pt; color: #7A746E; font-style: italic; line-height: 1.6; padding: 8px 12px; background: rgba(139,4,53,0.04); border-radius: 8px; margin-top: 8px; }
+  .devis-note strong { color: #8B0435; font-weight: 600; font-style: normal; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top"></div>
+  <div class="header-inner">
+    <div class="logo-area">
+      <img src="https://raw.githubusercontent.com/Inothebrand/Quote/refs/heads/main/logo.svg" alt="Logo Inès Ouajib" class="logo-svg">
+    </div>
+    <div class="header-text">
+      <div class="header-eyebrow">Inès Ouajib · Community Management</div>
+      <div class="header-title">MES <em>PRESTATIONS</em></div>
+      <div class="header-sub">Gestion des réseaux sociaux &amp; communication digitale — Beauté &amp; Bien-être · Devis personnalisé après échange</div>
+    </div>
+  </div>
+</header>
+
+<div class="info-bar">
+  <div class="info-bar-inner">
+    <div class="info-cell">
+      <div class="info-label">Spécialité</div>
+      <div class="info-value">Beauté · Bien-être · Luxe</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Zone</div>
+      <div class="info-value">France · Suisse Romande</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Engagement</div>
+      <div class="info-value">Contenu sur mesure · Stratégie · Résultats mesurables</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">Contact</div>
+      <div class="info-value">ines.ouajib@outlook.fr</div>
+    </div>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+  <div class="intro-note">
+    <strong>Comment ça fonctionne ?</strong> Ce document présente l'ensemble de mes prestations. Chaque mission est construite sur mesure en fonction de vos objectifs, votre réseau prioritaire et votre rythme. Après notre appel de découverte, je vous adresse un devis personnalisé.
+  </div>
+
+  <!-- SECTION 00 — CE QUE J'APPORTE -->
+  <div class="section-head">
+    <div class="sec-num">00</div>
+    <div class="sec-meta">
+      <div class="sec-tag">Mon approche</div>
+      <div class="sec-title">Ce que vous obtenez en travaillant avec moi</div>
+    </div>
+  </div>
+
+  <div class="engagements-grid">
+    <div class="engagement-block">
+      <div class="engagement-label">Spécialisation sectorielle</div>
+      <div class="engagement-title">Beauté & Bien-être uniquement</div>
+      <div class="engagement-detail">Je travaille exclusivement pour les salons, instituts, spas et marques de beauté. Je connais vos codes visuels, votre clientèle, les tendances de votre secteur — et ça se voit dans chaque contenu.</div>
+    </div>
+    <div class="engagement-block">
+      <div class="engagement-label">Contenu stratégique</div>
+      <div class="engagement-title">Pas juste de la publication</div>
+      <div class="engagement-detail">Chaque post s'inscrit dans une stratégie éditoriale pensée en amont. Thématiques, formats, calendrier, ton — tout est cohérent et travaillé pour votre marque spécifiquement.</div>
+    </div>
+    <div class="engagement-block">
+      <div class="engagement-label">Transparence &amp; suivi</div>
+      <div class="engagement-title">Vous savez toujours où on en est</div>
+      <div class="engagement-detail">Calendrier éditorial partagé, validation avant publication, rapport mensuel clair. Vous gardez le contrôle sans avoir à vous occuper de quoi que ce soit.</div>
+    </div>
+    <div class="engagement-block">
+      <div class="engagement-label">Sur mesure</div>
+      <div class="engagement-title">Aucun pack générique</div>
+      <div class="engagement-detail">Je ne vends pas des formules toutes faites. Les volumes, fréquences et réseaux sont définis ensemble selon vos objectifs réels et votre budget — pas l'inverse.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 01 — RÉSEAUX SOCIAUX -->
+  <div class="section-head">
+    <div class="sec-num">01</div>
+    <div class="sec-meta">
+      <div class="sec-tag">Animation éditoriale</div>
+      <div class="sec-title">Gestion des réseaux sociaux</div>
+    </div>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <div class="presta-card">
+    <div class="presta-header">
+      <div class="presta-name">Publications Instagram</div>
+      <div class="presta-right">
+        <div class="presta-badge-devis">Forfait mensuel · sur devis</div>
+        <span class="network-badge badge-ig">Instagram</span>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:28%">Livrable</th><th>Ce que ça inclut</th><th style="width:14%; text-align:right;">Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Publications mensuelles</td><td>Volume adapté à votre rythme — de 3 à 5 publications par semaine selon vos besoins</td><td class="td-incl">Au choix</td></tr>
+        <tr><td>Visuels créés</td><td>Création graphique soignée, respectant votre identité visuelle et les codes de votre secteur</td><td class="td-incl">Inclus</td></tr>
+        <tr><td>Légendes rédigées</td><td>Textes engageants, ton of voice adapté à votre marque, appels à l'action</td><td class="td-incl">Inclus</td></tr>
+        <tr><td>Hashtags optimisés</td><td>Sélection stratégique par publication pour maximiser la portée organique</td><td class="td-incl">Inclus</td></tr>
+        <tr><td>Stories</td><td>Présence quotidienne optionnelle — promotions, coulisses, avant/après, questions</td><td class="td-incl">Option</td></tr>
+        <tr><td>Planification</td><td>Programmation aux meilleures heures selon votre audience et les données de votre compte</td><td class="td-incl">Inclus</td></tr>
+        <tr><td>Charte graphique</td><td>Cohérence visuelle rigoureuse sur l'ensemble du fil et des stories</td><td class="td-incl">Inclus</td></tr>
+      </tbody>
+    </table>
+    <div class="presta-note">Le volume est défini ensemble selon votre activité. L'algorithme Instagram recommande au minimum 3 publications par semaine pour une visibilité efficace.</div>
+  </div>
+
+  <!-- TIKTOK -->
+  <div class="presta-card">
+    <div class="presta-header">
+      <div class="presta-name">Publications TikTok</div>
+      <div class="presta-right">
+        <div class="presta-badge-devis">Forfait mensuel · sur devis</div>
+        <span class="network-badge badge-tt">TikTok</span>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:28%">Livrable</th><th>Ce que ça inclut</th><th style="width:14%; text-align:right;">Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Vidéos mensuelles</td><td>Montage natif TikTok — sous-titres, musique tendance, texte animé, format vertical optimisé</td><td class="td-incl">Au choix</td></tr>
+        <tr><td>Stories TikTok</td><td>Stories verticales natives — promotions, coulisses, avant/après</td><td class="td-incl">Option</td></tr>
+        <tr><td>Reformatage Reels → TikTok</td><td>Adaptation native des contenus Instagram : recadrage, sous-titres TikTok, musique tendance, suppression du watermark</td><td class="td-incl">Inclus</td></tr>
+        <tr><td>Planification</td><td>Publication aux créneaux optimaux selon l'algorithme TikTok et votre audience</td><td class="td-incl">Inclus</td></tr>
+      </tbody>
+    </table>
+    <div class="presta-note">Le montage vidéo natif demande plus de temps qu'un visuel statique. Chaque contenu est adapté nativement pour TikTok — jamais un simple copier-coller depuis Instagram.</div>
+  </div>
+
+  <!-- FACEBOOK -->
+  <div class="presta-card">
+    <div class="presta-header">
+      <div class="presta-name">Publications Facebook</div>
+      <div class="presta-right">
+        <div class="presta-badge-devis">Forfait mensuel · sur devis</div>
+        <span class="network-badge badge-fb">Facebook</span>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:28%">Livrable</th><th>Ce que ça inclut</th><th style="width:14%; text-align:right;">Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Publications mensuelles</td><td>Visuels adaptés + textes rédigés pour l'audience Facebook — 2 à 4 publications par semaine</td><td class="td-incl">Au choix</td></tr>
+        <tr><td>Gestion de la Page</td><td>Optimisation de la Page Pro, paramétrage des infos et mise en avant des services (prestation one-shot)</td><td class="td-incl">Option</td></tr>
+        <tr><td>Planification</td><td>Programmation via Meta Business Suite aux meilleurs créneaux</td><td class="td-incl">Inclus</td></tr>
+        <tr><td>Charte graphique</td><td>Cohérence visuelle avec vos autres réseaux</td><td class="td-incl">Inclus</td></tr>
+      </tbody>
+    </table>
+    <div class="presta-note">Facebook reste incontournable pour la clientèle 35+ et les promotions locales. Les visuels sont adaptés depuis les contenus existants pour une cohérence maximale.</div>
+  </div>
+
+  <!-- LINKEDIN -->
+  <div class="presta-card">
+    <div class="presta-header">
+      <div class="presta-name">Publications LinkedIn</div>
+      <div class="presta-right">
+        <div class="presta-badge-devis">Forfait mensuel · sur devis</div>
+        <span class="network-badge badge-li">LinkedIn</span>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:28%">Livrable</th><th>Ce que ça inclut</th><th style="width:14%; text-align:right;">Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Publications mensuelles</td><td>Contenus orientés expertise, coulisses professionnelles, storytelling de marque — 2 à 3 publications par semaine</td><td class="td-incl">Au choix</td></tr>
+        <tr><td>Optimisation profil</td><td>Mise à jour et optimisation du profil ou de la Page Entreprise LinkedIn (prestation one-shot)</td><td class="td-incl">Option</td></tr>
+        <tr><td>Rédaction article</td><td>Article long format LinkedIn (800–1 200 mots) — expertise et référencement</td><td class="td-incl">Option</td></tr>
+        <tr><td>Planification</td><td>Publication aux créneaux optimaux (mardi–jeudi matin selon les données secteur)</td><td class="td-incl">Inclus</td></tr>
+      </tbody>
+    </table>
+    <div class="presta-note">Idéal pour asseoir votre crédibilité professionnelle et attirer des partenaires B2B dans le secteur beauté et bien-être.</div>
+  </div>
+
+  <!-- STRATÉGIE ÉDITORIALE -->
+  <div class="presta-card">
+    <div class="presta-header">
+      <div class="presta-name">Stratégie éditoriale</div>
+      <div class="presta-right">
+        <div class="presta-badge-devis">Mensuel · sur devis</div>
+        <div class="presta-tag">Mensuel</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:28%">Livrable</th><th>Ce que ça inclut</th><th style="width:14%; text-align:right;">Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Calendrier éditorial</td><td>Planning mensuel personnalisé : thématiques, formats, dates clés, temps forts de votre activité</td><td class="td-incl">Inclus</td></tr>
+        <tr><td>Ligne éditoriale</td><td>Définition du tone of voice et de la cohérence de communication sur tous vos réseaux</td><td class="td-incl">Inclus</td></tr>
+        <tr><td>Temps forts</td><td>Intégration des événements, promotions et actualités de votre activité dans le planning</td><td class="td-incl">Inclus</td></tr>
+      </tbody>
+    </table>
+    <div class="presta-note">Idéal si vous produisez vous-même vos contenus et souhaitez un cadre stratégique clair chaque mois. Peut être souscrit seul, sans gestion des publications.</div>
+  </div>
+
+  <!-- GESTION DE COMMUNAUTÉ -->
+  <div class="presta-card">
+    <div class="presta-header">
+      <div class="presta-name">Gestion de communauté</div>
+      <div class="presta-right">
+        <div class="presta-badge-devis">Mensuel · sur devis</div>
+        <div class="presta-tag">Mensuel</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:28%">Livrable</th><th>Ce que ça inclut</th><th style="width:14%; text-align:right;">Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Commentaires</td><td>Réponse aux commentaires sur vos publications — jours ouvrés, délai de réponse sous 4h</td><td class="td-incl">Option</td></tr>
+        <tr><td>Messages privés (DM)</td><td>Gestion des DM Instagram / TikTok / Facebook / LinkedIn — jours ouvrés</td><td class="td-incl">Option</td></tr>
+        <tr><td>Modération week-end</td><td>Réponse aux commentaires et DM le samedi et dimanche — sur demande</td><td class="td-incl">Option</td></tr>
+      </tbody>
+    </table>
+    <div class="presta-note">Chaque message sans réponse est une opportunité manquée. La communauté se construit aussi dans les échanges — pas seulement dans les publications. Peut être combiné avec la gestion des publications ou souscrit séparément.</div>
+  </div>
+
+  <!-- SECTION 02 — ANALYSE & REPORTING -->
+  <div class="section-head">
+    <div class="sec-num">02</div>
+    <div class="sec-meta">
+      <div class="sec-tag">Data & performance</div>
+      <div class="sec-title">Analyse &amp; reporting</div>
+    </div>
+  </div>
+
+  <div class="presta-card">
+    <div class="presta-header">
+      <div class="presta-name">Rapport mensuel</div>
+      <div class="presta-right">
+        <div class="presta-badge-devis">Mensuel · sur devis</div>
+        <div class="presta-tag">Mensuel</div>
+      </div>
+    </div>
+    <div class="analyse-grid">
+      <div class="analyse-col">
+        <div class="analyse-col-head">Version légère · Réseaux sociaux uniquement</div>
+        <ul class="analyse-list">
+          <li>Portée et impressions des publications</li>
+          <li>Taux d'engagement (likes, commentaires, partages)</li>
+          <li>Évolution du nombre d'abonnés</li>
+          <li>Performance des Reels, TikTok et stories</li>
+          <li>Meilleurs créneaux de publication</li>
+        </ul>
+      </div>
+      <div class="analyse-col">
+        <div class="analyse-col-head">Version avancée · Réseaux + site + recommandations</div>
+        <ul class="analyse-list">
+          <li>Tout ce qui est inclus dans la version légère</li>
+          <li>Trafic site via Google Analytics &amp; Search Console</li>
+          <li>Pages les plus consultées &amp; comportement visiteurs</li>
+          <li>Mots-clés générateurs de visites</li>
+          <li>Recommandations stratégiques écrites</li>
+        </ul>
+      </div>
+    </div>
+    <div class="presta-note">Rapport PDF clair et visuel envoyé chaque fin de mois — chiffres clés, ce qui a fonctionné, axes d'amélioration, plan d'action pour le mois suivant.</div>
+  </div>
+
+  <div class="presta-card">
+    <div class="presta-header">
+      <div class="presta-name">Veille concurrentielle</div>
+      <div class="presta-right">
+        <div class="presta-badge-devis">Mensuel · sur devis</div>
+        <div class="presta-tag">Mensuel</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:28%">Livrable</th><th>Ce que ça inclut</th><th style="width:14%; text-align:right;">Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Analyse concurrents</td><td>Étude mensuelle de la communication des concurrents locaux — formats, fréquence, engagement</td><td class="td-incl">Inclus</td></tr>
+        <tr><td>Benchmark &amp; opportunités</td><td>Formats qui performent dans votre secteur + recommandations concrètes pour vous différencier</td><td class="td-incl">Inclus</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="presta-card">
+    <div class="presta-header">
+      <div class="presta-name">Rapport trimestriel</div>
+      <div class="presta-right">
+        <div class="presta-badge-devis">Trimestriel · sur devis</div>
+        <div class="presta-tag">Trimestriel</div>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th style="width:28%">Livrable</th><th>Ce que ça inclut</th><th style="width:14%; text-align:right;">Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Bilan 3 mois</td><td>Analyse approfondie des tendances et évolutions sur la période complète</td><td class="td-incl">Inclus</td></tr>
+        <tr><td>Plan d'action</td><td>Recommandations stratégiques et objectifs chiffrés pour le trimestre suivant</td><td class="td-incl">Inclus</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 03 — PRESTATIONS PONCTUELLES -->
+  <div class="section-head">
+    <div class="sec-num">03</div>
+    <div class="sec-meta">
+      <div class="sec-tag">À la carte</div>
+      <div class="sec-title">Prestations ponctuelles</div>
+    </div>
+  </div>
+
+  <div class="options-card">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">Prestation</th>
+          <th>Ce que ça inclut</th>
+          <th style="width:18%; text-align:right;">Format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Post à la demande</td>
+          <td>Post hors planning (Instagram, Facebook ou LinkedIn) — visuel créé + légende rédigée + hashtags. Délai 48h.</td>
+          <td style="text-align:right; color:#8B0435; font-weight:600; font-size:7pt; font-family:'League Spartan',sans-serif; white-space:nowrap;">À l'unité</td>
+        </tr>
+        <tr>
+          <td>Story à la demande</td>
+          <td>Story urgente hors planning — promotion flash, annonce de dernière minute (Instagram ou TikTok).</td>
+          <td style="text-align:right; color:#8B0435; font-weight:600; font-size:7pt; font-family:'League Spartan',sans-serif; white-space:nowrap;">À l'unité</td>
+        </tr>
+        <tr>
+          <td>Shooting photo</td>
+          <td>Déplacement au salon — demi-journée (4h). Visuels retouchés prêts à publier. Volume au choix.</td>
+          <td style="text-align:right; color:#8B0435; font-weight:600; font-size:7pt; font-family:'League Spartan',sans-serif; white-space:nowrap;">Demi-journée</td>
+        </tr>
+        <tr>
+          <td>Shooting vidéo &amp; photo</td>
+          <td>Demi-journée (4h), mix photos + vidéos montées prêtes pour Reels et TikTok. Volume au choix.</td>
+          <td style="text-align:right; color:#8B0435; font-weight:600; font-size:7pt; font-family:'League Spartan',sans-serif; white-space:nowrap;">Demi-journée</td>
+        </tr>
+        <tr>
+          <td>Campagne publicitaire</td>
+          <td>Mise en place et suivi d'une pub Meta (Facebook / Instagram), TikTok ou LinkedIn Ads. Budget pub non inclus.</td>
+          <td style="text-align:right; color:#8B0435; font-weight:600; font-size:7pt; font-family:'League Spartan',sans-serif; white-space:nowrap;">Par campagne</td>
+        </tr>
+        <tr>
+          <td>Création de compte</td>
+          <td>Ouverture et paramétrage complet d'un compte Instagram, TikTok, Facebook ou LinkedIn — bio, liens, catégorie, identité visuelle de base.</td>
+          <td style="text-align:right; color:#8B0435; font-weight:600; font-size:7pt; font-family:'League Spartan',sans-serif; white-space:nowrap;">One-shot</td>
+        </tr>
+        <tr>
+          <td>Refonte graphique</td>
+          <td>Nouveau fil Instagram cohérent + templates Canva livrés et réutilisables en autonomie.</td>
+          <td style="text-align:right; color:#8B0435; font-weight:600; font-size:7pt; font-family:'League Spartan',sans-serif; white-space:nowrap;">One-shot</td>
+        </tr>
+        <tr>
+          <td>Audit de présence digitale</td>
+          <td>Analyse complète de vos réseaux (Instagram, TikTok, Facebook, LinkedIn) et de votre image en ligne. Livré avec recommandations écrites.</td>
+          <td style="text-align:right; color:#8B0435; font-weight:600; font-size:7pt; font-family:'League Spartan',sans-serif; white-space:nowrap;">One-shot</td>
+        </tr>
+        <tr>
+          <td>Jeu-concours</td>
+          <td>Conception, animation et bilan d'un concours Instagram, Facebook ou TikTok — règlement, visuels, suivi des participants.</td>
+          <td style="text-align:right; color:#8B0435; font-weight:600; font-size:7pt; font-family:'League Spartan',sans-serif; white-space:nowrap;">Par concours</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 04 — MÉTHODE -->
+  <div class="section-head">
+    <div class="sec-num">04</div>
+    <div class="sec-meta">
+      <div class="sec-tag">Organisation</div>
+      <div class="sec-title">Ma méthode de travail</div>
+    </div>
+  </div>
+
+  <div class="methode-grid">
+    <div class="methode-step">
+      <div class="step-num">1</div>
+      <div class="step-title">Appel de découverte</div>
+      <div class="step-desc">Compréhension de votre besoin, de votre univers et de vos objectifs. Gratuit, sans engagement.</div>
+    </div>
+    <div class="methode-step">
+      <div class="step-num">2</div>
+      <div class="step-title">Analyse</div>
+      <div class="step-desc">Étude de votre marque, de vos contenus existants et de vos performances actuelles.</div>
+    </div>
+    <div class="methode-step">
+      <div class="step-num">3</div>
+      <div class="step-title">Devis personnalisé</div>
+      <div class="step-desc">Proposition sur mesure selon les prestations sélectionnées et vos objectifs réels — envoyé sous 48h.</div>
+    </div>
+    <div class="methode-step">
+      <div class="step-num">4</div>
+      <div class="step-title">Mise en place</div>
+      <div class="step-desc">Création, accompagnement et exécution des actions définies ensemble.</div>
+    </div>
+    <div class="methode-step">
+      <div class="step-num">5</div>
+      <div class="step-title">Suivi continu</div>
+      <div class="step-desc">Analyse des résultats, ajustements et optimisation chaque mois.</div>
+    </div>
+  </div>
+
+  <div class="contact-cta">
+    <div>
+      <div class="cta-text">Prête à démarrer ?</div>
+      <div class="cta-sub">Réservez votre appel de découverte gratuit — je vous réponds sous 48h pour convenir d'un créneau.</div>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-email">ines.ouajib@outlook.fr</div>
+      <div class="cta-phone">+33 6 24 30 77 65</div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <div class="footer-left">Inès Ouajib · Community Management · Annecy-le-Vieux<br>Freelance — TVA non applicable (art. 293 B CGI) · Devis personnalisé sur demande</div>
+    <div class="footer-right">PRÉSENTATION DES PRESTATIONS 2026<br><span style="font-weight:300; color:#7A746E; font-family:'Mulish',sans-serif; font-size:6.5pt;">Document de présentation — appel de découverte gratuit</span></div>
+  </div>
+
+</div>
+</body>
+</html>
